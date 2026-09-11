@@ -621,12 +621,12 @@ export const unit2Exercises: Exercise[] = [
     lessonId: 'u2-l15', unitId: 'u2', estimatedTime: '15 mins',
     description: 'Karel needs to decorate a fence by placing balls on every other post. Use a pattern to alternate.',
     starterCode: `# Decorate the fence\n# Place balls on every other post\n\n`,
-    solution: `put_ball()\nfor i in range(3):\n    move()\n    move()\n    put_ball()`,
+    solution: `put_ball()\nwhile front_is_clear():\n    move()\n    if front_is_clear():\n        move()\n        put_ball()`,
     explanation: {
       overview: 'Algorithms are step-by-step procedures. This one alternates ball placement.',
       steps: [
-        { number: 1, title: 'Place First', content: 'Put ball on first post.', code: 'put_ball()' },
-        { number: 2, title: 'Skip and Place', content: 'Move 2, put ball, repeat.', code: 'for i in range(3):\n    move()\n    move()\n    put_ball()' }
+        { number: 1, title: 'Place First', content: 'Put a ball on the first post to start the pattern.', code: 'put_ball()' },
+        { number: 2, title: 'Loop and Alternate', content: 'Use a while loop to move forward. If there is another post, move again and place a ball.', code: 'while front_is_clear():\n    move()\n    if front_is_clear():\n        move()\n        put_ball()' }
       ],
       keyConcepts: ['Algorithm design', 'Pattern recognition', 'Alternating placement'],
       commonMistakes: ['Wrong spacing', 'Off-by-one errors'],
