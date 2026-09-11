@@ -621,13 +621,14 @@ export const unit2Exercises: Exercise[] = [
     lessonId: 'u2-l15', unitId: 'u2', estimatedTime: '15 mins',
     description: 'Karel needs to decorate a fence by placing balls on every other post. Use a pattern to alternate.',
     starterCode: `# Decorate the fence\n# Place balls on every other post\n\n`,
-    solution: `turn_left()\nput_ball()\nwhile front_is_clear():\n    move()\n    if front_is_clear():\n        move()\n        put_ball()`,
+    solution: `while front_is_clear():\n    move()\n\nturn_left()\n\nfor i in range(9):\n    if right_is_blocked():\n        put_ball()\n        move()\n    else:\n        move()\n\nif right_is_blocked():\n    put_ball()`,
     explanation: {
       overview: 'Algorithms are step-by-step procedures. This one alternates ball placement.',
       steps: [
-        { number: 1, title: 'Face the Fence', content: 'Karel starts facing East, but the fence is vertical. Turn left to face North.', code: 'turn_left()' },
-        { number: 2, title: 'Place First', content: 'Put a ball on the first post to start the pattern.', code: 'put_ball()' },
-        { number: 3, title: 'Loop and Alternate', content: 'Use a while loop to move forward. If there is another post, move again and place a ball.', code: 'while front_is_clear():\n    move()\n    if front_is_clear():\n        move()\n        put_ball()' }
+        { number: 1, title: 'Move to the Fence', content: 'First, move Karel to the far end of the street to reach the fence location.', code: 'while front_is_clear():\n    move()' },
+        { number: 2, title: 'Face North', content: 'Turn left to face the vertical fence.', code: 'turn_left()' },
+        { number: 3, title: 'Decorate the Fence', content: 'Use a loop to move up the fence. Check if the right is blocked to identify a fence post, and place a ball there.', code: 'for i in range(9):\n    if right_is_blocked():\n        put_ball()\n        move()\n    else:\n        move()' },
+        { number: 4, title: 'Final Post', content: 'Check one last time at the top of the fence to ensure the final post is decorated.', code: 'if right_is_blocked():\n    put_ball()' }
       ],
       keyConcepts: ['Algorithm design', 'Pattern recognition', 'Alternating placement'],
       commonMistakes: ['Wrong spacing', 'Off-by-one errors'],
